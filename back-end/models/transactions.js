@@ -26,7 +26,7 @@ module.exports = [
     {
         id: "48T0",
         item_name: "groceries",
-        amount: "$400.00",
+        amount: "$200.00",
         date: "10/05/2024",
         from: "grocery store",
         category: "groceries"
