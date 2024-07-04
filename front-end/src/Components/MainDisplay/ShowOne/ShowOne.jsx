@@ -22,7 +22,6 @@ const ShowOne = ({ transactions, setTransactions }) => {
         transactions.splice(transactions.indexOf(transaction), 1);
         setTransactions(transactions);
     };
-    console.log(transactions);
 
     return (
         <div className='transaction-container'>

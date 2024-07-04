@@ -1,5 +1,5 @@
 const generateTotalAmount = (arr) => {
-    const totalArr = arr.reduce((array, tran, i) => {
+    const totalArr = arr.reduce((array, tran) => {
         const numArr = tran.amount.split(".")
         const dollar = +numArr[0].slice(1)
         const cents = +numArr[1]
@@ -11,6 +11,7 @@ const generateTotalAmount = (arr) => {
     if(totalArr[1] === 0) {
         totalArr[1] = "00"
     }
+
     return `$${totalArr.join(".")}`
 }
 

@@ -9,6 +9,7 @@ const NewTransaction = ({ setTransactions }) => {
 
     const API = import.meta.env.VITE_BASE_URL;
     const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     const [newTransaction, setNewTransaction] = useState({
         id: nanoid(4),
@@ -21,6 +22,12 @@ const NewTransaction = ({ setTransactions }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!newTransaction.item_name || !newTransaction.amount || !newTransaction.date || !newTransaction.from || !newTransaction.category) {
+            setError('Please fill out all fields.');
+            return;
+        }
+
         console.log('Submitting new transaction:', newTransaction);
 
         fetch(`${API}`, {
@@ -48,6 +55,10 @@ const NewTransaction = ({ setTransactions }) => {
 
     const handleChange = (e) => {
         setNewTransaction({...newTransaction, [e.target.name]: e.target.value});
+    }
+
+    const handleSelect = (e) => {
+        setNewTransaction({...newTransaction, category: e.target.value})
     }
 
     return (
@@ -84,7 +95,13 @@ const NewTransaction = ({ setTransactions }) => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Category</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Items category" onChange={handleChange} name='category'/>
+                    <Form.Select value={newTransaction.category} onChange={handleSelect} name='category'>
+                        <option value="">Select category...</option>
+                        <option value="savings">Savings</option>
+                        <option value="leisure">Leisure</option>
+                        <option value="housing">Housing</option>
+                        <option value="groceries">Groceries</option>
+                    </Form.Select>
                     <Form.Text className="text-muted">
                         What is the category for this item?
                     </Form.Text>

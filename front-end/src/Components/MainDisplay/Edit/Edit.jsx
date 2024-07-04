@@ -14,6 +14,7 @@ const Edit = ({ transactions, setTransactions }) => {
         from: "",
         category: "",
     });
+    const [error, setError] = useState('');
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -36,8 +37,18 @@ const Edit = ({ transactions, setTransactions }) => {
         }));
     };
 
+    const handleSelect = (e) => {
+        console.log(e)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!transaction.item_name || !transaction.amount || !transaction.date || !transaction.from || transaction.category === "Select category...") {
+            setError('Please fill out all fields.');
+            return;
+        }
+
         fetch(`${API}/edit/${transactions.indexOf(singleTransaction)}`, {
             method: "PUT",
             body: JSON.stringify(transaction),
@@ -89,7 +100,13 @@ const Edit = ({ transactions, setTransactions }) => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Category</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Items category" value={transaction.category} onChange={handleChange} name='category' />
+                            <Form.Select value={transaction.category} onChange={handleSelect} name='category'>
+                                <option value="">Select category...</option>
+                                <option value="savings">Savings</option>
+                                <option value="leisure">Leisure</option>
+                                <option value="housing">Housing</option>
+                                <option value="groceries">Groceries</option>
+                            </Form.Select>
                             <Form.Text className="text-muted">
                                 What is the category for this item?
                             </Form.Text>

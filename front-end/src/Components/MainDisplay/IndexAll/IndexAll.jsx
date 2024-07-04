@@ -36,7 +36,6 @@ const IndexAll = ({transactions}) => {
                 </thead>
                 <tbody>
                 {transactions.map((transaction, i) => {
-                    // console.log(transaction)
                     const { id, item_name, amount, date, from, category } = transaction
                     const handleClick = () => {
                         navigate(`/transactions/${id}`)
