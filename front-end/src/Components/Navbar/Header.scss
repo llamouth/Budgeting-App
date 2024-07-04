@@ -1,0 +1,30 @@
+// Header.scss
+
+.navbar {
+    background-color: #007bff;
+    padding: 15px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: #fff;
+    font-size: 1.8em;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+    }
+  }
+  
+  .nav-link {
+    color: #fff;
+    font-size: 1.2em;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+  
+    &:hover {
+      color: #f0f0f0;
+      text-decoration: none;
+    }
+  }
+  
