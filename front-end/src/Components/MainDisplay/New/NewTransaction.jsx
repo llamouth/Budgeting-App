@@ -25,7 +25,7 @@ const NewTransaction = ({ setTransactions }) => {
         e.preventDefault();
 
         if (!newTransaction.item_name || !newTransaction.amount || !newTransaction.date || !newTransaction.from || !newTransaction.category) {
-            setError('Please fill out all fields.');
+            console.error('Please fill out all fields.');
             return;
         }
 
@@ -47,7 +47,6 @@ const NewTransaction = ({ setTransactions }) => {
             return res.json();
           })
           .then((res) => {
-            console.log('Response from server:', res);
             setTransactions((prevState) => [...prevState, res]);
             navigate('/transactions');
           })

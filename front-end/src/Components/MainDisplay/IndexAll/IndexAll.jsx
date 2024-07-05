@@ -9,6 +9,7 @@ const IndexAll = ({transactions}) => {
 
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
+    const total = generateTotalAmount(transactions)
 
     useEffect(() => {
         if(transactions.length > 0){
@@ -22,7 +23,7 @@ const IndexAll = ({transactions}) => {
     
     return (
         <div className='table-container'>
-            <h1>Weekly Amount Spent: {generateTotalAmount(transactions)}</h1>
+            <h3>Current Balance: <span className={total.includes("-") ? "withdraw" : "deposit"}>{total}</span></h3>
             <Table responsive striped bordered hover>
                 <thead>
                     <tr>        
@@ -35,7 +36,7 @@ const IndexAll = ({transactions}) => {
                     </tr>
                 </thead>
                 <tbody>
-                {transactions.map((transaction, i) => {
+                {transactions.map((transaction) => {
                     const { id, item_name, amount, date, from, category } = transaction
                     const handleClick = () => {
                         navigate(`/transactions/${id}`)
@@ -44,7 +45,7 @@ const IndexAll = ({transactions}) => {
                         <tr onClick={handleClick} key={id}>
                             <td>{id}</td>
                             <td>{formatString(item_name)}</td>
-                            <td>{formatAmount(amount)}</td>
+                            <td className={amount.includes("-") ? "withdraw" : "deposit"}>{formatAmount(amount)}</td>
                             <td>{date}</td>
                             <td>{formatString(from)}</td>
                             <td>{formatString(category)}</td>

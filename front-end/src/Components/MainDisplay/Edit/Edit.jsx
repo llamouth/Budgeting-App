@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../styles/Edit.scss'; // Import the SCSS file for styling
+import '../styles/Edit.scss';
 
 const Edit = ({ transactions, setTransactions }) => {
 
@@ -14,7 +14,6 @@ const Edit = ({ transactions, setTransactions }) => {
         from: "",
         category: "",
     });
-    const [error, setError] = useState('');
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -38,14 +37,14 @@ const Edit = ({ transactions, setTransactions }) => {
     };
 
     const handleSelect = (e) => {
-        setNewTransaction({...transaction, category: e.target.value})
+        setTransaction({...transaction, category: e.target.value})
     }
 
     const handleSubmit = (e) => { 
         e.preventDefault();
 
         if (!transaction.item_name || !transaction.amount || !transaction.date || !transaction.from || transaction.category === "Select category...") {
-            setError('Please fill out all fields.');
+            console.error('Please fill out all fields.');
             return <h1>'Please fill out all fields.'</h1>
         }
 

@@ -16,14 +16,14 @@ const calculateCents = (array, amount) => {
 }
 
 const generateTotalAmount = (arr) => {
-    const totalArr = arr.reduce((array, tran, i) => {
+    const totalArr = arr.reduce((array, tran) => {
         const numArr = tran.amount.split(".")
         const cents = numArr[1]
         let dollar = numArr[0]
         if(dollar.includes("$")){
             dollar = numArr[0].slice(1)
             array[0] += +dollar
-            array[1] += +cents
+            array[1] = calculateCents(array, cents)
         }else if (dollar.includes("-")) {
             array[0] += +dollar
             array[1] = calculateCents(array, cents)

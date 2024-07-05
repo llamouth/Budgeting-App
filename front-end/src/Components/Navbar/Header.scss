@@ -1,9 +1,25 @@
-// Header.scss
-
 .navbar {
     background-color: #007bff;
     padding: 15px 40px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 0;
+
+    @media (max-width: 1200px) {
+        padding: 15px 30px;
+    }
+
+    @media (max-width: 992px) {
+        padding: 15px 20px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 10px 15px;
+    }
+
+    @media (max-width: 576px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
   
 .navbar-brand {
@@ -13,6 +29,19 @@
 
     &:hover {
         cursor: pointer;
+    }
+
+    @media (max-width: 992px) {
+        font-size: 1.6em;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.4em;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 1.2em;
+        margin-bottom: 10px;
     }
 }
   
@@ -26,5 +55,19 @@
         color: #f0f0f0;
         text-decoration: none;
     }
+
+    @media (max-width: 992px) {
+        font-size: 1em;
+        margin-right: 15px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 0.9em;
+        margin-right: 10px;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
 }
-  
