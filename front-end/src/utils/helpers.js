@@ -42,8 +42,8 @@ const formatString = (str) => {
 }
 
 const formatAmount = (str) => {
-    if(str.includes("$")){
-        return str
+    if(str.includes("-")){
+        return `-$${str.slice(1)}`
     }else {
         return `$${str}`
     }

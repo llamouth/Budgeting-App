@@ -10,6 +10,7 @@ import Footer from './Components/Footer/Footer'
 import ShowOne from "./Components/MainDisplay/ShowOne/ShowOne"
 import Edit from './Components/MainDisplay/Edit/Edit'
 import NewTransaction from './Components/MainDisplay/New/NewTransaction'
+import Home from './Components/MainDisplay/Home/Home'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Header/>
       <div className='container__routes'>
         <Routes>
+          <Route path='/' element={<Home/>}/>
           <Route path='/transactions' element={<IndexAll transactions={transactions}/>}/>
           <Route path='/transactions/new' element={<NewTransaction setTransactions={setTransactions}/>}/>
           <Route path='/transactions/:id' element={<ShowOne transactions={transactions} setTransactions={setTransactions}/>}/>
