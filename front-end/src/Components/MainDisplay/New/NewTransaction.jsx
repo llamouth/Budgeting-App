@@ -9,10 +9,11 @@ const NewTransaction = ({ setTransactions }) => {
 
     const API = import.meta.env.VITE_BASE_URL;
     const navigate = useNavigate();
-    const [error, setError] = useState('');
+    const [method, setMethod] = useState('deposit');
 
     const [newTransaction, setNewTransaction] = useState({
         id: nanoid(4),
+        type: "",
         item_name: "",
         amount: "",
         date: "",
@@ -28,7 +29,9 @@ const NewTransaction = ({ setTransactions }) => {
             return;
         }
 
-        console.log('Submitting new transaction:', newTransaction);
+        if(method === "withdraw"){
+            newTransaction.amount = "-" + newTransaction.amount
+        }
 
         fetch(`${API}`, {
           method: 'POST',
@@ -54,17 +57,26 @@ const NewTransaction = ({ setTransactions }) => {
       };
 
     const handleChange = (e) => {
+        if(e.target.name === "type") {
+            setMethod(e.target.value)
+        }
         setNewTransaction({...newTransaction, [e.target.name]: e.target.value});
-    }
-
-    const handleSelect = (e) => {
-        setNewTransaction({...newTransaction, category: e.target.value})
     }
 
     return (
         <div className="form-container">
             <h2>Create New Transaction</h2>
             <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                    <Form.Label>Transaction type</Form.Label>
+                    <Form.Select value={newTransaction.type} onChange={handleChange} name='type'>
+                        <option value="deposit">Deposit</option>
+                        <option value="withdraw">Withdraw</option>
+                    </Form.Select>
+                    <Form.Text className="text-muted">
+                        Is this a deposit or withdraw?
+                    </Form.Text>
+                </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Item Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter Item Name" onChange={handleChange} name='item_name'/>
@@ -95,7 +107,7 @@ const NewTransaction = ({ setTransactions }) => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Category</Form.Label>
-                    <Form.Select value={newTransaction.category} onChange={handleSelect} name='category'>
+                    <Form.Select value={newTransaction.category} onChange={handleChange} name='category'>
                         <option value="">Select category...</option>
                         <option value="savings">Savings</option>
                         <option value="leisure">Leisure</option>

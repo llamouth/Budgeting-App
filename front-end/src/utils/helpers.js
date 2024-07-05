@@ -1,10 +1,36 @@
+const calculateCents = (array, amount) => {
+    let cents = array[1]
+    let dollars = array[0]
+
+    if(amount > cents) {
+        dollars -= 1
+        cents += 100
+        if(cents >= 100) {
+            dollars += 1
+            cents -= 100
+        }
+        return cents - amount
+    }else {
+        return cents
+    }
+}
+
 const generateTotalAmount = (arr) => {
-    const totalArr = arr.reduce((array, tran) => {
+    const totalArr = arr.reduce((array, tran, i) => {
         const numArr = tran.amount.split(".")
-        const dollar = +numArr[0].slice(1)
-        const cents = +numArr[1]
-        array[0] += dollar
-        array[1] += cents
+        const cents = numArr[1]
+        let dollar = numArr[0]
+        if(dollar.includes("$")){
+            dollar = numArr[0].slice(1)
+            array[0] += +dollar
+            array[1] += +cents
+        }else if (dollar.includes("-")) {
+            array[0] += +dollar
+            array[1] = calculateCents(array, cents)
+        }else {
+            array[0] += +dollar
+            array[1] += +cents
+        }
         return array
     },[0,0])
 
@@ -26,5 +52,6 @@ const formatAmount = (str) => {
         return `$${str}`
     }
 }
+
 
 export {generateTotalAmount, formatString, formatAmount}

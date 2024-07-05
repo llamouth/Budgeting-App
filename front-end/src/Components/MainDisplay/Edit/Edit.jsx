@@ -38,15 +38,15 @@ const Edit = ({ transactions, setTransactions }) => {
     };
 
     const handleSelect = (e) => {
-        console.log(e)
+        setNewTransaction({...transaction, category: e.target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => { 
         e.preventDefault();
 
         if (!transaction.item_name || !transaction.amount || !transaction.date || !transaction.from || transaction.category === "Select category...") {
             setError('Please fill out all fields.');
-            return;
+            return <h1>'Please fill out all fields.'</h1>
         }
 
         fetch(`${API}/edit/${transactions.indexOf(singleTransaction)}`, {
