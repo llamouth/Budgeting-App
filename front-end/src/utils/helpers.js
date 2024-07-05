@@ -20,11 +20,7 @@ const generateTotalAmount = (arr) => {
         const numArr = tran.amount.split(".")
         const cents = numArr[1]
         let dollar = numArr[0]
-        if(dollar.includes("$")){
-            dollar = numArr[0][0] + numArr.slice(2)
-            array[0] += +dollar
-            array[1] = calculateCents(array, cents)
-        }else if (dollar.includes("-")) {
+        if(dollar.includes("-")){
             array[0] += +dollar
             array[1] = calculateCents(array, cents)
         }else {
