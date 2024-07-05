@@ -9,6 +9,7 @@ const Edit = ({ transactions, setTransactions }) => {
     const API = import.meta.env.VITE_BASE_URL;
     const [transaction, setTransaction] = useState({
         item_name: "",
+        type: "",
         amount: "",
         date: "",
         from: "",
@@ -29,6 +30,7 @@ const Edit = ({ transactions, setTransactions }) => {
     }, [id]);
 
     const handleChange = (e) => {
+        console.log(e);
         const { name, value } = e.target;
         setTransaction(prevState => ({
             ...prevState,
@@ -70,6 +72,16 @@ const Edit = ({ transactions, setTransactions }) => {
                     <h2>Edit Transaction</h2>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3">
+                            <Form.Label>Transaction type</Form.Label>
+                            <Form.Select value={transaction.type} onChange={handleChange} name='type'>
+                                <option value="deposit">Deposit</option>
+                                <option value="withdraw">Withdraw</option>
+                            </Form.Select>
+                            <Form.Text className="text-muted">
+                                Is this a deposit or withdraw?
+                            </Form.Text>
+                        </Form.Group>
+                            <Form.Group className="mb-3">
                             <Form.Label>Item Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter Item Name" value={transaction.item_name} onChange={handleChange} name='item_name' />
                             <Form.Text className="text-muted">

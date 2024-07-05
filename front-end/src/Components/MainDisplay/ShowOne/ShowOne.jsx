@@ -32,6 +32,7 @@ const ShowOne = ({ transactions, setTransactions }) => {
                     </div>
                     <div className="transaction-details">
                         <p className="transaction-id">ID: {id}</p>
+                        <p>Type: {formatString(transaction.type)}</p>
                         <p>Amount: {formatAmount(transaction.amount)}</p>
                         <p>Date: {transaction.date}</p>
                         <p>From: {formatString(transaction.from)}</p>
