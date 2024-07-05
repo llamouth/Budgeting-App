@@ -18,7 +18,7 @@ module.exports = [
     {
         id: "J43E",
         item_name: "rent",
-        amount: "$-900.00",
+        amount: "-$900.00",
         date: "2024-10-01",
         from: "landlord",
         category: "housing"
@@ -26,7 +26,7 @@ module.exports = [
     {
         id: "48T0",
         item_name: "groceries",
-        amount: "$-200.00",
+        amount: "-$200.00",
         date: "2024-10-05",
         from: "grocery store",
         category: "groceries"
@@ -34,7 +34,7 @@ module.exports = [
     {
         id: "5E8P",
         item_name: "good stuff",
-        amount: "$-200.00",
+        amount: "-$200.00",
         date: "2024-10-02",
         from: "good people",
         category: "leisure"
