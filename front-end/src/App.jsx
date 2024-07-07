@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 /* Components */
 import Header from './Components/Navbar/Header'
 import IndexAll from './Components/MainDisplay/IndexAll/IndexAll'
-import Footer from './Components/Footer/Footer'
 import ShowOne from "./Components/MainDisplay/ShowOne/ShowOne"
 import Edit from './Components/MainDisplay/Edit/Edit'
 import NewTransaction from './Components/MainDisplay/New/NewTransaction'
@@ -36,7 +35,6 @@ function App() {
           <Route path='/transactions/:id/edit' element={<Edit transactions={transactions} setTransactions={setTransactions}/>}/>
         </Routes>
       </div>
-      <Footer/>  
     </>
   )
 }

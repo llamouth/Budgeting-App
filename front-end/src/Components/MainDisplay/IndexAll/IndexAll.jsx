@@ -18,7 +18,7 @@ const IndexAll = ({transactions}) => {
     },[transactions])
 
     if (loading) {
-        return <p>Loading transactions...</p>;
+        return <p className='loading'>Loading transactions...</p>;
     }
     
     return (

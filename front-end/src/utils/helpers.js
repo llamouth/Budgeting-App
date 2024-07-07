@@ -49,5 +49,4 @@ const formatAmount = (str) => {
     }
 }
 
-
 export {generateTotalAmount, formatString, formatAmount}

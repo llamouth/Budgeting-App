@@ -99,7 +99,7 @@ const Edit = ({ transactions, setTransactions }) => {
                             <Form.Label>Date</Form.Label>
                             <Form.Control type="date" placeholder="Enter the date" value={transaction.date} onChange={handleChange} name='date' />
                             <Form.Text className="text-muted">
-                                When was this purchase made?
+                                When was this transaction made?
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3">
