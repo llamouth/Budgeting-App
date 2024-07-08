@@ -57,8 +57,10 @@ const ShowOne = ({ transactions, setTransactions }) => {
                     <div className='confirmDelete-overlay'></div>
                     <div className='confirmDelete'>
                         <p>Are you sure you want to delete this transaction?</p>
-                        <Button onClick={deleteTransaction}>Yes</Button>
-                        <Button onClick={handleDelete}>No</Button>
+                        <div className="delete-buttons">
+                            <Button onClick={deleteTransaction}>Yes</Button>
+                            <Button onClick={handleDelete}>No</Button>
+                        </div>
                     </div>
                 </>
             }

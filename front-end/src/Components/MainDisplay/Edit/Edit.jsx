@@ -30,8 +30,14 @@ const Edit = ({ transactions, setTransactions }) => {
     }, [id]);
 
     const handleChange = (e) => {
-        console.log(e);
         const { name, value } = e.target;
+        if(name === "type" && value === "withdraw") {
+            console.log(value, name);
+            setTransaction(prevState => ({
+                ...prevState,
+                [name]: `-${value}`,
+            }));
+        }
         setTransaction(prevState => ({
             ...prevState,
             [name]: value,
@@ -44,10 +50,16 @@ const Edit = ({ transactions, setTransactions }) => {
 
     const handleSubmit = (e) => { 
         e.preventDefault();
-
         if (!transaction.item_name || !transaction.amount || !transaction.date || !transaction.from || transaction.category === "Select category...") {
             console.error('Please fill out all fields.');
             return <h1>'Please fill out all fields.'</h1>
+        }
+
+        if(transaction.type === "withdraw") {
+            setTransaction((prevState) => {
+                return {...prevState, amount: `-${transaction.amount}`}
+            })
+            console.log(transaction)
         }
 
         fetch(`${API}/edit/${transactions.indexOf(singleTransaction)}`, {
@@ -111,7 +123,7 @@ const Edit = ({ transactions, setTransactions }) => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Category</Form.Label>
-                            <Form.Select value={transaction.category} onChange={handleSelect} name='category'>
+                            <Form.Select value={transaction.category} onChange={handleChange} name='category'>
                                 <option value="">Select category...</option>
                                 <option value="savings">Savings</option>
                                 <option value="leisure">Leisure</option>
