@@ -1,24 +1,80 @@
-# Expense Tracker App
+# BudgetYaself
 
-## Overview
-
-The Expense Tracker App is a simple web application built with React and integrates with a backend API to manage and track expenses. It allows users to add, edit, and view transactions, helping them monitor their spending habits effectively.
+BudgetYaself is a full-stack web application that allows users to manage their budget by keeping track of transactions. Users can view all transactions, add new ones, edit existing ones, and delete transactions.
 
 ## Features
 
-- Add new transactions with details such as item name, amount, date, origin, and category.
-- Edit existing transactions to update details.
-- View a list of all transactions recorded.
-- Seamless navigation between different views using React Router.
-- Integration with a backend API to persist transaction data.
+- View a list of all transactions
+- Add new transactions
+- Edit existing transactions
+- Delete transactions
+- View individual transaction details
 
-## Technologies Used
+### Prerequisites
+
+- Node.js
+- npm (or yarn)
+
+### Frontend
 
 - React
 - React Router
-- Bootstrap (for styling)
-- Backend API (provide details or link if applicable)
+- Bootstrap
+- SCSS
 
-## Setup Instructions
+### Backend
 
-()[]
+- Express
+- Node.js
+
+## Getting Started
+### Deployment
+
+[Click here to view the BudgetYaSelf website](https://budgetyaself.netlify.app/)
+
+### Installation 
+
+1. **Clone the repository:**
+
+```sh
+git clone https://github.com/your-username/budgetyaself.git
+cd budgetyaself
+```
+
+2. **Install dependencies for the backend:**
+
+```sh
+cd backend
+npm install
+```
+
+3. **Install dependencies for the frontend:**
+
+```sh
+cd ../frontend
+npm install
+```
+
+### Running the application: 
+
+1. **Start the backend server:**
+
+```sh
+cd backend
+npm start
+```
+
+2. **Start the frontend development server::**
+
+```sh
+cd ../frontend
+npm run dev
+```
+
+## Environment Variables 
+Create a `.env` file in the frontend directory and add the following
+```sh
+VITE_BASE_URL=<Your API URL>
+``` 
+
+Thank you for using BudgetYaSelf the Budgeting Master.
