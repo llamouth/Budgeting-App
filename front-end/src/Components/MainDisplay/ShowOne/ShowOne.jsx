@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "../styles/ShowOne.scss";
 import { formatString, formatAmount } from "../../../utils/helpers";
+import "../styles/ShowOne.scss";
 
 const ShowOne = ({ transactions, setTransactions }) => {
     const { id } = useParams();
@@ -10,7 +10,13 @@ const ShowOne = ({ transactions, setTransactions }) => {
     const transaction = transactions.find(ele => ele.id === id);
     const API = import.meta.env.VITE_BASE_URL;
 
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     const handleDelete = () => {
+        setConfirmDelete(!confirmDelete);
+    };
+
+    const deleteTransaction = () => {
         fetch(`${API}/${transactions.indexOf(transaction)}`, {
             method: "DELETE"
         })
@@ -46,6 +52,16 @@ const ShowOne = ({ transactions, setTransactions }) => {
                     <Button>Edit</Button>
                 </Link>
             </div>
+            {confirmDelete && 
+                <>
+                    <div className='confirmDelete-overlay'></div>
+                    <div className='confirmDelete'>
+                        <p>Are you sure you want to delete this transaction?</p>
+                        <Button onClick={deleteTransaction}>Yes</Button>
+                        <Button onClick={handleDelete}>No</Button>
+                    </div>
+                </>
+            }
         </div>
     );
 };

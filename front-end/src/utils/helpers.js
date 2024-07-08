@@ -34,6 +34,10 @@ const generateTotalAmount = (arr) => {
         totalArr[1] = "00"
     }
 
+    if(Math.sign(totalArr[0]) === -1) {
+        return `-$${String(totalArr[0]).slice(1)}.${totalArr[1]}`
+    }
+
     return `$${totalArr.join(".")}`
 }
 
