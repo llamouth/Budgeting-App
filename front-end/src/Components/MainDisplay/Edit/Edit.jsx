@@ -32,7 +32,6 @@ const Edit = ({ transactions, setTransactions }) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         if(name === "type" && value === "withdraw") {
-            console.log(value, name);
             setTransaction(prevState => ({
                 ...prevState,
                 [name]: `-${value}`,
@@ -59,7 +58,6 @@ const Edit = ({ transactions, setTransactions }) => {
             setTransaction((prevState) => {
                 return {...prevState, amount: `-${transaction.amount}`}
             })
-            console.log(transaction)
         }
 
         fetch(`${API}/edit/${transactions.indexOf(singleTransaction)}`, {
