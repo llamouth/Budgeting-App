@@ -10,6 +10,7 @@ import ShowOne from "./Components/MainDisplay/ShowOne/ShowOne"
 import Edit from './Components/MainDisplay/Edit/Edit'
 import NewTransaction from './Components/MainDisplay/New/NewTransaction'
 import Home from './Components/MainDisplay/Home/Home'
+import Login from './Components/MainDisplay/Login/Login'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/transactions/new' element={<NewTransaction setTransactions={setTransactions}/>}/>
           <Route path='/transactions/:id' element={<ShowOne transactions={transactions} setTransactions={setTransactions}/>}/>
           <Route path='/transactions/:id/edit' element={<Edit transactions={transactions} setTransactions={setTransactions}/>}/>
+          <Route path='/login' element={<Login/>}/>
         </Routes>
       </div>
     </>

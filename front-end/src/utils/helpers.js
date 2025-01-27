@@ -1,6 +1,5 @@
 const calculateCents = (array, amount) => {
-    let cents = array[1]
-    let dollars = array[0]
+    let [dollars,cents] = array
 
     if(amount > cents) {
         dollars -= 1

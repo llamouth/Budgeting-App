@@ -21,6 +21,13 @@ const NewTransaction = ({ setTransactions }) => {
         category: "",
     });
 
+    const handleKeyDown = (e) => {
+        if (e.key === '$') {
+            e.preventDefault();
+            alert('The "$" symbol is not allowed.');
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -56,6 +63,10 @@ const NewTransaction = ({ setTransactions }) => {
       };
 
     const handleChange = (e) => {
+        if (e.target.value.includes('$')) {
+            alert('The "$" symbol is not allowed.');
+            return;
+        }
         if(e.target.name === "type") {
             setMethod(e.target.value)
         }
@@ -85,7 +96,7 @@ const NewTransaction = ({ setTransactions }) => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Amount</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Amount" onChange={handleChange} name='amount'/>
+                    <Form.Control type="text" placeholder="Enter Amount" onChange={handleChange} onKeyDown={handleKeyDown} name='amount'/>
                     <Form.Text className="text-muted">
                         How much is the item?
                     </Form.Text>
